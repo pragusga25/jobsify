@@ -4,7 +4,13 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import { API_PREFIX } from './constants';
 import { errorHandler } from './middleware';
-import { meRouter, signinRouter, signoutRouter, signupRouter } from './routes';
+import {
+  meRouter,
+  refreshTokenRouter,
+  signinRouter,
+  signoutRouter,
+  signupRouter,
+} from './routes';
 import { NotFoundError } from './errors';
 
 dotenv.config();
@@ -20,12 +26,13 @@ app.use(API_PREFIX, meRouter);
 app.use(API_PREFIX, signinRouter);
 app.use(API_PREFIX, signoutRouter);
 app.use(API_PREFIX, signupRouter);
+app.use(API_PREFIX, refreshTokenRouter);
 
-app.all('*', () => {
+app.all('*', async () => {
   throw new NotFoundError();
 });
 app.use(errorHandler);
 
 app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
+  console.log(`⚡️[server]: Server is running on port ${port}`);
 });

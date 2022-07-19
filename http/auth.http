@@ -1,0 +1,27 @@
+GET http://jobsify.dev/api/users/me
+
+###
+
+POST http://jobsify.dev/api/users/signup
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "password1234"
+}
+
+###
+
+POST http://jobsify.dev/api/users/signin
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "password1234"
+}
+
+###
+
+POST http://jobsify.dev/api/users/signout
+Content-Type: application/json
+
