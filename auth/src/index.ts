@@ -4,6 +4,7 @@ import cors from 'cors';
 import { API_PREFIX } from './constants';
 import { errorHandler } from './middleware';
 import { meRouter, signinRouter, signoutRouter, signupRouter } from './routes';
+import { NotFoundError } from './errors';
 
 dotenv.config();
 
@@ -18,6 +19,10 @@ app.use(API_PREFIX, meRouter);
 app.use(API_PREFIX, signinRouter);
 app.use(API_PREFIX, signoutRouter);
 app.use(API_PREFIX, signupRouter);
+
+app.get('*', () => {
+  throw new NotFoundError();
+});
 app.use(errorHandler);
 
 app.listen(port, () => {
