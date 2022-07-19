@@ -1,12 +1,9 @@
 import express, { Express } from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import { meRouter } from './routes/me';
-import { signinRouter } from './routes/signin';
-import { signoutRouter } from './routes/signout';
-import { signupRouter } from './routes/signup';
-import { API_PREFIX } from './constants/api';
-import { errorHandler } from './middleware/error-handler';
+import { API_PREFIX } from './constants';
+import { errorHandler } from './middleware';
+import { meRouter, signinRouter, signoutRouter, signupRouter } from './routes';
 
 dotenv.config();
 
