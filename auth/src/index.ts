@@ -1,4 +1,5 @@
 import express, { Express } from 'express';
+import 'express-async-errors';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import { API_PREFIX } from './constants';
@@ -20,7 +21,7 @@ app.use(API_PREFIX, signinRouter);
 app.use(API_PREFIX, signoutRouter);
 app.use(API_PREFIX, signupRouter);
 
-app.get('*', () => {
+app.all('*', () => {
   throw new NotFoundError();
 });
 app.use(errorHandler);
