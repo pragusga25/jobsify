@@ -2,7 +2,7 @@ POST http://jobsify.dev/api/users/signup
 Content-Type: application/json
 
 {
-  "username": "usermx1",
+  "username": "user",
   "password": "password1234"
 }
 
@@ -12,19 +12,19 @@ POST http://jobsify.dev/api/users/signin
 Content-Type: application/json
 
 {
-  "username": "usermx1",
+  "username": "user",
   "password": "password1234"
 }
 
 ###
 
 GET http://jobsify.dev/api/users/me
-Authorization: Bearer eyJhbGciOiJIUzId1NiIsInR5cCI6IkpXVCJ9.eyJ4LWpvYnNpZnkta2V5Ijp7ImlkIjoiNjJkNzdkYTVlODQ3NTViNTA3MDE4MTc0Iiwicm9sZSI6InVzZXIiLCJ1c2VybmFtZSI6InVzZXJteDEifSwiaWF0IjoxNjU4Mjg5NTc2LCJleHAiOjE2NTgyOTA0NzZ9.8f0ZzT5hMTLsb_xrzophd1k5O7isj6Z9fz3v-TFu598
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ4LWpvYnNpZnkta2V5Ijp7ImlkIjoiNjJkN2QwZmMzMGViYTk2Yjg3MTRjOTlkIiwicm9sZSI6ImFkbWluIiwidXNlcm5hbWUiOiJ1c2VyIn0sImlhdCI6MTY1ODMxMTMyMywiZXhwIjoxNjU4MzEyMjIzfQ.uT7_ei_vPuTljXEfo8L4i4x1yjlq4Vw4WYtrlbOyAqs
 
 ###
 
 POST http://jobsify.dev/api/users/refresh-token
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ4LWpvYnNpZnkta2V5Ijp7ImlkIjoiNjJkNzdkYTVlODQ3NTViNTA3MDE4MTc0Iiwicm9sZSI6InVzZXIiLCJ1c2VybmFtZSI6InVzZXJteDEifSwiaWF0IjoxNjU4MjkwOTA5LCJleHAiOjE2NTg4OTU3MDl9.k8K-leeXdhtWnjvspu4TAwGa-bZbSapzg6qhLem1Ouo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ4LWpvYnNpZnkta2V5Ijp7ImlkIjoiNjJkN2QwZmMzMGViYTk2Yjg3MTRjOTlkIiwicm9sZSI6InVzZXIiLCJ1c2VybmFtZSI6InVzZXIifSwiaWF0IjoxNjU4MzExMjMyLCJleHAiOjE2NTg5MTYwMzJ9.PNHQ9iShLy_EpiYVdFtRrAb4CbdBh8UlU78Tiw-Gttw
 
 ###
 

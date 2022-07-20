@@ -1,14 +1,18 @@
-import { Jwt, Password } from './../services';
 import express, { Request, Response } from 'express';
 import * as redis from 'redis';
-import { body } from 'express-validator';
-import { BadRequestError } from '../errors';
 import { User } from '../models';
-import { notAuthenticated, validateRequest } from '../middlewares';
+import {
+  notAuthenticated,
+  validateRequest,
+  BadRequestError,
+  Jwt,
+  Password,
+  body,
+} from '@jobsify/common';
 
 const router = express.Router();
 const client = redis.createClient({
-  url: 'redis://auth-redis-srv:6379',
+  url: process.env.REDIS_URI!,
 });
 
 router.post(

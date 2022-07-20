@@ -1,25 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: auth-depl
+  name: jobs-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: auth
+      app: jobs
   template:
     metadata:
       labels:
-        app: auth
+        app: jobs
     spec:
       containers:
-        - name: auth
-          image: pragusga/auth
+        - name: jobs
+          image: pragusga/jobs
           env:
             - name: MONGO_URI
               value: 'mongodb://jobs-mongo-srv:27017/jobs'
-            - name: REDIS_URI
-              value: 'redis://auth-redis-srv:6379'
             - name: JWT_ACCESS_TOKEN_SECRET
               valueFrom:
                 secretKeyRef:
@@ -38,12 +36,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: auth-srv
+  name: jobs-srv
 spec:
   selector:
-    app: auth
+    app: jobs
   ports:
-    - name: auth
+    - name: jobs
       protocol: TCP
       port: 3000
       targetPort: 3000

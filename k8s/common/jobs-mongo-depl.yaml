@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: auth-mongo-depl
+  name: jobs-mongo-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: auth-mongo
+      app: jobs-mongo
   template:
     metadata:
       labels:
-        app: auth-mongo
+        app: jobs-mongo
     spec:
       containers:
-        - name: auth-mongo
+        - name: jobs-mongo
           image: mongo:4.0-xenial
           resources:
             limits:
@@ -23,10 +23,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: auth-mongo-srv
+  name: jobs-mongo-srv
 spec:
   selector:
-    app: auth-mongo
+    app: jobs-mongo
   ports:
     - name: db
       protocol: TCP

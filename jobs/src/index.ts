@@ -6,9 +6,8 @@ const start = async () => {
     JWT_ACCESS_TOKEN_SECRET: access,
     JWT_REFRESH_TOKEN_SECRET: refresh,
     MONGO_URI: mongo,
-    REDIS_URI: redis,
   } = process.env;
-  if (!access || !refresh || !mongo || !redis) {
+  if (!access || !refresh || !mongo) {
     throw new Error(
       'There are environment variables missing. Please set them up.'
     );
@@ -20,7 +19,8 @@ const start = async () => {
   } catch (err) {
     console.error(err);
   }
-  const port = 3000;
+
+  const port = process.env.PORT || 3000;
 
   app.listen(port, () => {
     console.log(`⚡️[server]: Server is running on port ${port}`);

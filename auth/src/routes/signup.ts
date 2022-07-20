@@ -1,7 +1,10 @@
 import express, { Request, Response } from 'express';
-import { body } from 'express-validator';
-import { BadRequestError } from '../errors';
-import { notAuthenticated, validateRequest } from '../middlewares';
+import {
+  BadRequestError,
+  notAuthenticated,
+  validateRequest,
+  body,
+} from '@jobsify/common';
 import { User } from '../models';
 
 const router = express.Router();

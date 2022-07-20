@@ -1,12 +1,10 @@
 import express from 'express';
 import * as redis from 'redis';
-import jwt from 'jsonwebtoken';
-import { JwtPayload } from '../interfaces';
-import { JWT_PAYLOAD_KEY } from '../constants';
+import { jwt, JwtPayload, JWT_PAYLOAD_KEY } from '@jobsify/common';
 
 const router = express.Router();
 const client = redis.createClient({
-  url: 'redis://auth-redis-srv:6379',
+  url: process.env.REDIS_URI!,
 });
 
 router.post('/signout', async (req, res) => {

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { Password } from '../services';
+import { Password } from '@jobsify/common';
 
 /* An interface that describes the required 
 attributes to create a new User */
