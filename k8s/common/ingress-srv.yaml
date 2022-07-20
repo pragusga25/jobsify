@@ -17,3 +17,10 @@ spec:
                 name: auth-srv
                 port:
                   number: 3000
+          - path: /api/jobs/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: jobs-srv
+                port:
+                  number: 3000
