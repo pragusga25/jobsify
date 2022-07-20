@@ -9,7 +9,6 @@ Content-Type: application/json
 ###
 
 POST http://jobsify.dev/api/users/signin
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ4LWpvYnNpZnkta2V5Ijp7ImlkIjoiNjJkNzdkYTVlODQ3NTViNTA3MDE4MTc0Iiwicm9sZSI6InVzZXIiLCJ1c2VybmFtZSI6InVzZXJteDEifSwiaWF0IjoxNjU4MjkwOTgxLCJleHAiOjE2NTgyOTE4ODF9.9T5D1GWsTW66VPaJ5JsK-98uC0VJ70tvPB8Vs7u7dhA
 Content-Type: application/json
 
 {
