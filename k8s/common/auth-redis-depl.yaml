@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: auth-mongo-depl
+  name: auth-redis-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: auth-mongo
+      app: auth-redis
   template:
     metadata:
       labels:
-        app: auth-mongo
+        app: auth-redis
     spec:
       containers:
-        - name: auth-mongo
-          image: mongo:4.0-xenial
+        - name: auth-redis
+          image: redis
           resources:
             limits:
               memory: 1024Mi
@@ -23,12 +23,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: auth-mongo-srv
+  name: auth-redis-srv
 spec:
   selector:
-    app: auth-mongo
+    app: auth-redis
   ports:
     - name: db
       protocol: TCP
-      port: 27017
-      targetPort: 27017
+      port: 6379
+      targetPort: 6379

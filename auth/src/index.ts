@@ -1,9 +1,10 @@
-import express, { Express } from 'express';
+import express from 'express';
 import 'express-async-errors';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import mongoose from 'mongoose';
 import { API_PREFIX } from './constants';
-import { errorHandler } from './middleware';
+import { errorHandler } from './middlewares';
 import {
   meRouter,
   refreshTokenRouter,
@@ -15,7 +16,7 @@ import { NotFoundError } from './errors';
 
 dotenv.config();
 
-const app: Express = express();
+const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(cors());
@@ -33,6 +34,25 @@ app.all('*', async () => {
 });
 app.use(errorHandler);
 
-app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running on port ${port}`);
-});
+const start = async () => {
+  const { JWT_ACCESS_TOKEN_SECRET: access, JWT_REFRESH_TOKEN_SECRET: refresh } =
+    process.env;
+  if (!access || !refresh) {
+    throw new Error(
+      'JWT_ACCESS_TOKEN_SECRET or JWT_REFRESH_TOKEN_SECRET is not defined'
+    );
+  }
+
+  try {
+    await mongoose.connect('mongodb://auth-mongo-srv:27017/auth');
+    console.log('Connected to MongoDB');
+  } catch (err) {
+    console.error(err);
+  }
+
+  app.listen(port, () => {
+    console.log(`⚡️[server]: Server is running on port ${port}`);
+  });
+};
+
+start();

@@ -1,11 +1,14 @@
 import express, { Request, Response } from 'express';
-import { body, validationResult } from 'express-validator';
-import { DatabaseConnectionError, RequestValidationError } from '../errors';
+import { body } from 'express-validator';
+import { BadRequestError } from '../errors';
+import { notAuthenticated, validateRequest } from '../middlewares';
+import { User } from '../models';
 
 const router = express.Router();
 
 router.post(
   '/signup',
+  notAuthenticated,
   [
     body('username')
       .isString()
@@ -17,17 +20,20 @@ router.post(
       .isLength({ min: 8, max: 32 })
       .withMessage('Password must be between 8 and 64 characters long.'),
   ],
-  (req: Request, res: Response) => {
-    const errors = validationResult(req);
+  validateRequest,
+  async (req: Request, res: Response) => {
+    const { username, password } = req.body;
 
-    if (!errors.isEmpty()) {
-      throw new RequestValidationError(errors.array());
+    const existingUser = await User.findOne({ username });
+
+    if (existingUser) {
+      throw new BadRequestError('Username already exists.');
     }
 
-    console.log('Creating a user...');
-    throw new DatabaseConnectionError();
+    const user = User.build({ username, password });
+    await user.save();
 
-    res.send({});
+    res.status(201).send(user);
   }
 );
 

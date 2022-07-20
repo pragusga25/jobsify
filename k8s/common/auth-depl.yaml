@@ -15,6 +15,17 @@ spec:
       containers:
         - name: auth
           image: pragusga/auth
+          env:
+            - name: JWT_ACCESS_TOKEN_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-access-token-secret
+                  key: JWT_ACCESS_TOKEN_SECRET
+            - name: JWT_REFRESH_TOKEN_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-refresh-token-secret
+                  key: JWT_REFRESH_TOKEN_SECRET
           resources:
             limits:
               memory: 2048Mi
