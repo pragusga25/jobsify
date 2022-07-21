@@ -1,9 +1,9 @@
 import express from 'express';
-import { currentUser, requireAdminRole } from '@jobsify/common';
+import { requireAdminRole } from '@jobsify/common';
 
 const router = express.Router();
 
-router.delete('/:id', currentUser, requireAdminRole, (req, res) => {
+router.delete('/:id', requireAdminRole, (req, res) => {
   res.send('Delete a Job');
 });
 

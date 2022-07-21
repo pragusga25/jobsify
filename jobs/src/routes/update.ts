@@ -1,9 +1,9 @@
 import express from 'express';
-import { currentUser, requireAdminRole } from '@jobsify/common';
+import { requireAdminRole } from '@jobsify/common';
 
 const router = express.Router();
 
-router.patch('/:id', currentUser, requireAdminRole, (req, res) => {
+router.patch('/:id', requireAdminRole, (req, res) => {
   res.send('Update a Job');
 });
 

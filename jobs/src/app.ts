@@ -1,7 +1,7 @@
 import express from 'express';
 import 'express-async-errors';
 import cors from 'cors';
-import { errorHandler, NotFoundError } from '@jobsify/common';
+import { currentUser, errorHandler, NotFoundError } from '@jobsify/common';
 import {
   createRouter,
   deleteRouter,
@@ -18,6 +18,7 @@ app.set('trust proxy', true);
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(currentUser);
 
 app.use(API_PREFIX, createRouter);
 app.use(API_PREFIX, deleteRouter);
