@@ -8,6 +8,8 @@ interface JobAttrs {
   responsibilities: string[];
   location: string;
   description: string;
+  vacancy: number;
+  status: 'open' | 'closed';
 }
 
 type JobDoc = Document<string> & Required<JobAttrs>;
@@ -46,6 +48,16 @@ const jobSchema = new Schema(
       type: String,
       required: true,
     },
+    vacancy: {
+      type: Number,
+      required: true,
+    },
+    status: {
+      type: String,
+      required: true,
+      enum: ['open', 'closed'],
+      default: 'open',
+    },
   },
   {
     toJSON: {
@@ -55,6 +67,7 @@ const jobSchema = new Schema(
         delete ret.__v;
       },
     },
+    timestamps: true,
   }
 );
 

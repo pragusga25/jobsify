@@ -1,5 +1,5 @@
 POST http://jobsify.dev/api/jobs/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ4LWpvYnNpZnkta2V5Ijp7ImlkIjoiNjJkOGUwODQwMzlhMjdiYTk3MTM0YTFjIiwicm9sZSI6ImFkbWluIiwidXNlcm5hbWUiOiJ1c2VyIn0sImlhdCI6MTY1ODM4MDQyMiwiZXhwIjoxNjU4MzgxMzIyfQ.9UUAjdqd_E24vI4ppwPqWv044kvfycM82aAOQszbWds
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ4LWpvYnNpZnkta2V5Ijp7ImlkIjoiNjJkOGUwODQwMzlhMjdiYTk3MTM0YTFjIiwicm9sZSI6ImFkbWluIiwidXNlcm5hbWUiOiJ1c2VyIn0sImlhdCI6MTY1ODM4MjE1NCwiZXhwIjoxNjU4MzgzMDU0fQ.0nGJua6zpk4ikQsaDLtXGtmToALu8pNJPpThHEp_nJ0
 Content-Type: application/json
 
 {
@@ -16,7 +16,7 @@ Content-Type: application/json
     "Test code"
   ],
   "location": "New York, NY",
-  "salary": "$100,000"
+  "vacancy":10
 }
 
 ###
@@ -26,17 +26,23 @@ Content-Type: application/json
 
 ###
 
-GET http://jobsify.dev/api/users/me
+DELETE http://jobsify.dev/api/jobs/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ4LWpvYnNpZnkta2V5Ijp7ImlkIjoiNjJkN2QwZmMzMGViYTk2Yjg3MTRjOTlkIiwicm9sZSI6ImFkbWluIiwidXNlcm5hbWUiOiJ1c2VyIn0sImlhdCI6MTY1ODMxMTMyMywiZXhwIjoxNjU4MzEyMjIzfQ.uT7_ei_vPuTljXEfo8L4i4x1yjlq4Vw4WYtrlbOyAqs
 
 ###
 
-POST http://jobsify.dev/api/users/refresh-token
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ4LWpvYnNpZnkta2V5Ijp7ImlkIjoiNjJkN2QwZmMzMGViYTk2Yjg3MTRjOTlkIiwicm9sZSI6InVzZXIiLCJ1c2VybmFtZSI6InVzZXIifSwiaWF0IjoxNjU4MzExMjMyLCJleHAiOjE2NTg5MTYwMzJ9.PNHQ9iShLy_EpiYVdFtRrAb4CbdBh8UlU78Tiw-Gttw
+PATCH http://jobsify.dev/api/jobs/62d8e0925af73c4d70c4407b
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ4LWpvYnNpZnkta2V5Ijp7ImlkIjoiNjJkOGUwODQwMzlhMjdiYTk3MTM0YTFjIiwicm9sZSI6ImFkbWluIiwidXNlcm5hbWUiOiJ1c2VyIn0sImlhdCI6MTY1ODM4NjUwMywiZXhwIjoxNjU4Mzg3NDAzfQ.0PgsAAeNkI0XJXTCysGkrUPqJHpbidjDeQcDF827Tx8
+Content-Type: application/json
+
+{
+  "name": "Software Engineer Updated",
+  "vacancy": 100
+}
 
 ###
 
-POST http://jobsify.dev/api/users/signout
+GET http://jobsify.dev/api/jobs/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ4LWpvYnNpZnkta2V5Ijp7ImlkIjoiNjJkNzdkYTVlODQ3NTViNTA3MDE4MTc0Iiwicm9sZSI6InVzZXIiLCJ1c2VybmFtZSI6InVzZXJteDEifSwiaWF0IjoxNjU4MjkwOTgxLCJleHAiOjE2NTgyOTE4ODF9.9T5D1GWsTW66VPaJ5JsK-98uC0VJ70tvPB8Vs7u7dhA
-Content-Type: application/json
+
 

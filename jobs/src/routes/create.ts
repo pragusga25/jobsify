@@ -8,7 +8,7 @@ router.post(
   '/',
   requireAdminRole,
   [
-    body('name').not().isEmpty().withMessage('Company is required'),
+    body('name').not().isEmpty().withMessage('Name is required'),
     body('company').not().isEmpty().withMessage('Company is required'),
     body('salary').optional().isString().withMessage('Salary must be a string'),
     body('location').not().isEmpty().withMessage('Location is required'),
@@ -23,6 +23,16 @@ router.post(
       .isEmpty()
       .isArray({ min: 1 })
       .withMessage('Requirements is required'),
+    body('vacancy')
+      .not()
+      .isEmpty()
+      .isInt({ min: 0 })
+      .withMessage('Vacancy is required'),
+    body('status')
+      .optional()
+      .isString()
+      .isIn(['open', 'closed'])
+      .withMessage('Status must be open or closed'),
   ],
   validateRequest,
   async (req: Request, res: Response) => {
@@ -34,6 +44,8 @@ router.post(
       responsibilities,
       location,
       description,
+      vacancy,
+      status = 'open',
     } = req.body;
 
     const job = Job.build({
@@ -44,6 +56,8 @@ router.post(
       responsibilities,
       location,
       description,
+      vacancy,
+      status,
     });
 
     await job.save();
