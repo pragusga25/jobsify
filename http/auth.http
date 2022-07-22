@@ -2,7 +2,7 @@ POST http://jobsify.dev/api/users/signup
 Content-Type: application/json
 
 {
-  "username": "user",
+  "username": "admin",
   "password": "password1234"
 }
 
@@ -12,7 +12,7 @@ POST http://jobsify.dev/api/users/signin
 Content-Type: application/json
 
 {
-  "username": "user",
+  "username": "admin",
   "password": "password1234"
 }
 

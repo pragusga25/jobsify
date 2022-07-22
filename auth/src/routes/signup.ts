@@ -3,8 +3,8 @@ import {
   BadRequestError,
   notAuthenticated,
   validateRequest,
-  body,
 } from '@jobsify/common';
+import { body } from 'express-validator';
 import { User } from '../models';
 
 const router = express.Router();

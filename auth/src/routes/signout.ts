@@ -1,6 +1,7 @@
 import express from 'express';
 import * as redis from 'redis';
-import { jwt, JwtPayload, JWT_PAYLOAD_KEY } from '@jobsify/common';
+import { JwtPayload, JWT_PAYLOAD_KEY } from '@jobsify/common';
+import jwt from 'jsonwebtoken';
 
 const router = express.Router();
 const client = redis.createClient({
@@ -27,7 +28,7 @@ router.post('/signout', async (req, res) => {
     await client.disconnect();
   } catch {}
 
-  res.send({});
+  res.status(204).send({});
 });
 
 export { router as signoutRouter };

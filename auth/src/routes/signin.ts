@@ -7,9 +7,8 @@ import {
   BadRequestError,
   Jwt,
   Password,
-  body,
 } from '@jobsify/common';
-
+import { body } from 'express-validator';
 const router = express.Router();
 const client = redis.createClient({
   url: process.env.REDIS_URI!,

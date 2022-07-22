@@ -1,5 +1,11 @@
+import { JobStatus } from '@jobsify/common';
 import { Document, Model, Schema, model } from 'mongoose';
+import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
 
+type IdVersion = {
+  id: string;
+  version: number;
+};
 interface JobAttrs {
   name: string;
   company: string;
@@ -9,13 +15,18 @@ interface JobAttrs {
   location: string;
   description: string;
   vacancy: number;
-  status: 'open' | 'closed';
+  status: JobStatus;
+  applicants?: number;
 }
 
-type JobDoc = Document<string> & Required<JobAttrs>;
+type JobDoc = Document &
+  Required<JobAttrs> & {
+    version: number;
+  };
 
 interface JobModel extends Model<JobDoc> {
   build(attrs: JobAttrs): JobDoc;
+  findByIdVersion(data: IdVersion): Promise<JobDoc | null>;
 }
 
 const jobSchema = new Schema(
@@ -55,8 +66,12 @@ const jobSchema = new Schema(
     status: {
       type: String,
       required: true,
-      enum: ['open', 'closed'],
-      default: 'open',
+      enum: Object.values(JobStatus),
+      default: JobStatus.Closed,
+    },
+    applicants: {
+      type: Number,
+      default: 0,
     },
   },
   {
@@ -71,6 +86,10 @@ const jobSchema = new Schema(
   }
 );
 
+jobSchema.set('versionKey', 'version');
+jobSchema.plugin(updateIfCurrentPlugin);
+jobSchema.statics.findByIdVersion = ({ id, version }: IdVersion) =>
+  Job.findOne({ _id: id, version: version - 1 });
 jobSchema.statics.build = (attrs: JobAttrs) => new Job(attrs);
 
 const Job = model<JobDoc, JobModel>('Job', jobSchema);

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { Password } from '@jobsify/common';
+import { Password, Role } from '@jobsify/common';
 
 /* An interface that describes the required 
 attributes to create a new User */
@@ -20,7 +20,7 @@ interface UserDoc extends mongoose.Document {
   username: string;
   password: string;
   id: string;
-  role: string;
+  role: Role;
 }
 
 const userSchema = new mongoose.Schema(
@@ -36,8 +36,8 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      default: 'admin',
-      enum: ['user', 'admin'],
+      enum: Object.values(Role),
+      default: Role.Admin,
     },
   },
   {

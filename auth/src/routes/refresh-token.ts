@@ -6,7 +6,8 @@ import {
   JwtPayload,
   requireRefreshToken,
 } from '@jobsify/common';
-import { Jwt, jwt } from '@jobsify/common';
+import { Jwt } from '@jobsify/common';
+import jwt from 'jsonwebtoken';
 
 const router = express.Router();
 const client = redis.createClient({
@@ -21,18 +22,18 @@ router.post('/refresh-token', requireRefreshToken, async (req, res) => {
   }
 
   try {
-    console.log('Hiii1');
+    
     const { [JWT_PAYLOAD_KEY]: payloadValues } = jwt.verify(
       refreshToken,
       process.env.REFRESH_TOKEN_SECRET!
     ) as JwtPayload;
-    console.log('Hiii2', payloadValues);
+    
     const key = `${payloadValues.id}__refreshToken__${refreshToken}`;
     await client.connect();
     const storedRefreshToken = await client.get(key);
     await client.disconnect();
 
-    console.log('Hiii2', storedRefreshToken);
+    
     if (!storedRefreshToken) {
       throw new UnauthorizedError();
     }

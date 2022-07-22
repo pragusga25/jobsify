@@ -1,12 +1,14 @@
 import express, { Request, Response } from 'express';
 import {
-  body,
   NotFoundError,
   requireAdminRole,
   validateRequest,
 } from '@jobsify/common';
+import { body } from 'express-validator';
 import { Job } from '../models';
 import { FIELDS } from '../constants';
+import { JobUpdatedPublisher } from '../publishers';
+import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();
 
@@ -75,8 +77,14 @@ router.patch(
     });
 
     if (dataUpdated.size > 0) {
-      job.set(Object.fromEntries(dataUpdated));
+      const data = Object.fromEntries(dataUpdated);
+      job.set(data);
       await job.save();
+      new JobUpdatedPublisher(natsWrapper.stan).publish({
+        ...job.toObject(),
+        id,
+        version: job.version,
+      });
     }
 
     res.status(200).send({ job });

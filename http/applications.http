@@ -1,0 +1,35 @@
+POST http://jobsify.dev/api/applications/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ4LWpvYnNpZnkta2V5Ijp7ImlkIjoiNjJkYTNmNjljZTRkYzAwZDcwY2I3ZjRmIiwicm9sZSI6ImFkbWluIiwidXNlcm5hbWUiOiJhZG1pbiJ9LCJpYXQiOjE2NTg0NzAyNTEsImV4cCI6MTY1ODQ3MTE1MX0.SclKIFaiNjjZMZcznuyLU6BiPTWOdw3MlDzz8Mk5GEk
+Content-Type: application/json
+
+{
+  "jobId": "62da414be5c7c5d38b2d8341"
+}
+
+###
+
+GET http://jobsify.dev/api/applications/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ4LWpvYnNpZnkta2V5Ijp7ImlkIjoiNjJkYTNmNjljZTRkYzAwZDcwY2I3ZjRmIiwicm9sZSI6ImFkbWluIiwidXNlcm5hbWUiOiJhZG1pbiJ9LCJpYXQiOjE2NTg0NzAyNTEsImV4cCI6MTY1ODQ3MTE1MX0.SclKIFaiNjjZMZcznuyLU6BiPTWOdw3MlDzz8Mk5GEk
+Content-Type: application/json
+
+###
+
+DELETE http://jobsify.dev/api/applications/62da42b872725d2efbc88e0a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ4LWpvYnNpZnkta2V5Ijp7ImlkIjoiNjJkYTNmNjljZTRkYzAwZDcwY2I3ZjRmIiwicm9sZSI6ImFkbWluIiwidXNlcm5hbWUiOiJhZG1pbiJ9LCJpYXQiOjE2NTg0NzEyMzIsImV4cCI6MTY1ODQ3MjEzMn0.LDwBRKOHwevgtlRBvYBlwb2lcdarrrwLCjLMtdm5Yzo
+
+###
+
+PATCH http://jobsify.dev/api/applications/62da42b872725d2efbc88e0a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ4LWpvYnNpZnkta2V5Ijp7ImlkIjoiNjJkYTNmNjljZTRkYzAwZDcwY2I3ZjRmIiwicm9sZSI6ImFkbWluIiwidXNlcm5hbWUiOiJhZG1pbiJ9LCJpYXQiOjE2NTg0NzAyNTEsImV4cCI6MTY1ODQ3MTE1MX0.SclKIFaiNjjZMZcznuyLU6BiPTWOdw3MlDzz8Mk5GEk
+Content-Type: application/json
+
+{
+  "status": "accepted"
+}
+
+###
+
+GET http://jobsify.dev/api/applications/62da1bafb2117903cf461223
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ4LWpvYnNpZnkta2V5Ijp7ImlkIjoiNjJkYTE5OWViYjllMmJmODE3NGVlMzg0Iiwicm9sZSI6ImFkbWluIiwidXNlcm5hbWUiOiJhZG1pbiJ9LCJpYXQiOjE2NTg0NjA1NzcsImV4cCI6MTY1ODQ2MTQ3N30.DBpeeK8VBRcZKuggD1hqWEg-NxRNwWExB0uiFTFmZas
+
+

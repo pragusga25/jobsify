@@ -17,7 +17,7 @@ spec:
           image: pragusga/auth
           env:
             - name: MONGO_URI
-              value: 'mongodb://jobs-mongo-srv:27017/jobs'
+              value: 'mongodb://auth-mongo-srv:27017/auth'
             - name: REDIS_URI
               value: 'redis://auth-redis-srv:6379'
             - name: JWT_ACCESS_TOKEN_SECRET
@@ -33,7 +33,7 @@ spec:
           resources:
             limits:
               memory: 1024Mi
-              cpu: '1'
+              cpu: '0.8'
 ---
 apiVersion: v1
 kind: Service

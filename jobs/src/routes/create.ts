@@ -1,6 +1,9 @@
 import express, { Request, Response } from 'express';
-import { requireAdminRole, body, validateRequest } from '@jobsify/common';
+import { requireAdminRole, validateRequest } from '@jobsify/common';
 import { Job } from '../models';
+import { body } from 'express-validator';
+import { JobCreatedPublisher } from '../publishers';
+import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();
 
@@ -48,7 +51,7 @@ router.post(
       status = 'open',
     } = req.body;
 
-    const job = Job.build({
+    const data = {
       name,
       company,
       salary,
@@ -58,9 +61,18 @@ router.post(
       description,
       vacancy,
       status,
-    });
+      applicants: 0,
+    };
+
+    const job = Job.build(data);
 
     await job.save();
+
+    new JobCreatedPublisher(natsWrapper.stan).publish({
+      id: job.id,
+      ...data,
+      version: job.version,
+    });
 
     res.status(201).json({ job });
   }

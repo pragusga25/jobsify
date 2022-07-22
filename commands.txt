@@ -1,0 +1,1 @@
+k delete deployment applications-depl auth-depl auth-mongo-depl auth-redis-depl jobs-depl jobs-mongo-depl applications-mongo-depl nats-depl

@@ -24,3 +24,10 @@ spec:
                 name: jobs-srv
                 port:
                   number: 3000
+          - path: /api/applications/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: applications-srv
+                port:
+                  number: 3000

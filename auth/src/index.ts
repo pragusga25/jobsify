@@ -23,7 +23,7 @@ const start = async () => {
   const port = 3000;
 
   app.listen(port, () => {
-    console.log(`⚡️[server]: Server is running on port ${port}`);
+    console.log(`⚡️[auth]: Server is running on port ${port}`);
   });
 };
 
