@@ -29,6 +29,7 @@ app.use(API_PREFIX, updateRouter);
 app.all('*', async () => {
   throw new NotFoundError();
 });
+
 app.use(errorHandler);
 
 export { app };
