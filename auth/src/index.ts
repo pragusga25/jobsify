@@ -14,7 +14,6 @@ const start = async () => {
       'There are environment variables missing. Please set them up.'
     );
   }
-
   try {
     await mongoose.connect(mongo);
     console.log('Connected to MongoDB');
