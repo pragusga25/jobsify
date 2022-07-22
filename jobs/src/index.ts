@@ -30,6 +30,7 @@ const start = async () => {
 
     new ApplicationCreatedListener(natsWrapper.stan).listen();
     new ApplicationDeletedListener(natsWrapper.stan).listen();
+
     await mongoose.connect(mongo);
     console.log('Connected to MongoDB');
   } catch (err) {
