@@ -20,6 +20,7 @@ const start = async () => {
 
   try {
     await natsWrapper.connect('jobsify', '12saas3', 'http://nats-srv:4222');
+
     natsWrapper.stan.on('close', () => {
       console.log('NATS connection closed');
       process.exit();
