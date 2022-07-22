@@ -8,6 +8,7 @@ const start = async () => {
     MONGO_URI: mongo,
     REDIS_URI: redis,
   } = process.env;
+
   if (!access || !refresh || !mongo || !redis) {
     throw new Error(
       'There are environment variables missing. Please set them up.'
