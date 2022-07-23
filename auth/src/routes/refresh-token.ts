@@ -22,18 +22,16 @@ router.post('/refresh-token', requireRefreshToken, async (req, res) => {
   }
 
   try {
-    
     const { [JWT_PAYLOAD_KEY]: payloadValues } = jwt.verify(
       refreshToken,
       process.env.REFRESH_TOKEN_SECRET!
     ) as JwtPayload;
-    
+
     const key = `${payloadValues.id}__refreshToken__${refreshToken}`;
     await client.connect();
     const storedRefreshToken = await client.get(key);
     await client.disconnect();
 
-    
     if (!storedRefreshToken) {
       throw new UnauthorizedError();
     }
@@ -43,7 +41,8 @@ router.post('/refresh-token', requireRefreshToken, async (req, res) => {
     res.status(201).send({
       accessToken,
     });
-  } catch {
+  } catch (err) {
+    console.error(err);
     throw new UnauthorizedError();
   }
 });
