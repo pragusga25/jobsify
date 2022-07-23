@@ -1,5 +1,6 @@
 import {
   BadRequestError,
+  JobStatus,
   NotFoundError,
   requireAuth,
   validateRequest,
@@ -39,6 +40,11 @@ router.post(
 
     if (isApplied) {
       throw new BadRequestError('You have already applied for this job');
+    }
+
+    const isClosed = job.status === JobStatus.Closed;
+    if (isClosed) {
+      throw new BadRequestError('This job is closed');
     }
 
     const application = Application.build({
