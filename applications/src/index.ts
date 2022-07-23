@@ -8,6 +8,7 @@ import {
 import { natsWrapper } from './nats-wrapper';
 
 const start = async () => {
+  console.log('[applications]: Starting up...');
   const {
     JWT_ACCESS_TOKEN_SECRET: access,
     JWT_REFRESH_TOKEN_SECRET: refresh,
