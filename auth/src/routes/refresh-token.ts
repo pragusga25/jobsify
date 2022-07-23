@@ -24,7 +24,7 @@ router.post('/refresh-token', requireRefreshToken, async (req, res) => {
   try {
     const { [JWT_PAYLOAD_KEY]: payloadValues } = jwt.verify(
       refreshToken,
-      process.env.REFRESH_TOKEN_SECRET!
+      process.env.JWT_REFRESH_TOKEN_SECRET!
     ) as JwtPayload;
 
     const key = `${payloadValues.id}__refreshToken__${refreshToken}`;
