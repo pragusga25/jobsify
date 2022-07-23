@@ -17,7 +17,7 @@ spec:
           image: mongo:4.0-xenial
           resources:
             limits:
-              memory: 100Mi
+              memory: 120Mi
               cpu: '0.1'
 ---
 apiVersion: v1

@@ -17,7 +17,7 @@ spec:
           image: redis
           resources:
             limits:
-              memory: 50Mi
+              memory: 80Mi
               cpu: '0.1'
 ---
 apiVersion: v1
